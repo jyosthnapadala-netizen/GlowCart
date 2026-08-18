@@ -1,0 +1,36 @@
+.category-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #fff7fa;
+}
+
+.category-section h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+.category-list {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.category-list button {
+    min-width: 180px;
+    padding: 18px 30px;
+    border: none;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.category-list button:hover {
+    transform: translateY(-5px);
+    background-color: #e91e63;
+    color: white;
+}

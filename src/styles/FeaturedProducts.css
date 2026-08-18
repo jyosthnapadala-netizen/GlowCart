@@ -1,0 +1,39 @@
+.featured-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.featured-section h2 {
+    font-size: 30px;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.featured-subtitle {
+    color: #777;
+    margin-bottom: 35px;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.view-products-btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 12px 28px;
+    border-radius: 25px;
+    background-color: #e91e63;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.view-products-btn:hover {
+    background-color: #c2185b;
+    transform: translateY(-2px);
+}

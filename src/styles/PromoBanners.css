@@ -1,0 +1,87 @@
+.promo-section {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.promo-card {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 14px;
+    background-color: #f8f8f8;
+}
+
+.promo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.promo-card:hover img {
+    transform: scale(1.05);
+}
+
+.promo-content {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 30px;
+
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.05)
+    );
+
+    color: white;
+}
+
+.promo-content span {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+
+.promo-content h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.promo-content p {
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 230px;
+    margin-bottom: 20px;
+}
+
+.promo-content a {
+    display: inline-block;
+    padding: 9px 18px;
+    border-radius: 20px;
+
+    background-color: white;
+    color: #e91e63;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.promo-content a:hover {
+    background-color: #e91e63;
+    color: white;
+}

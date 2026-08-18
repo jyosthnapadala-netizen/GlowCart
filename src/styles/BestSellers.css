@@ -1,0 +1,23 @@
+.best-sellers-section {
+    max-width: 1200px;
+    margin: 70px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.best-sellers-section h2 {
+    font-size: 30px;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.best-sellers-subtitle {
+    color: #777;
+    margin-bottom: 35px;
+}
+
+.best-sellers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}

@@ -1,0 +1,28 @@
+import Hero from "../components/Hero";
+import CategorySection from "../components/CategorySection";
+import FeaturedProducts from "../components/FeaturedProducts";
+import ProductList from "../components/ProductList";
+import OfferBanner from "../components/OfferBanner";
+import BestSellers from "../components/BestSellers";
+import WhyChooseUs from "../components/WhyChooseUs";
+import PromoBanners from "../components/PromoBanners";
+
+function Home({ search }) {
+  return (
+    <div>
+      <Hero />
+      <PromoBanners />
+
+      <CategorySection />
+
+      <FeaturedProducts />
+      <OfferBanner />
+      <BestSellers />
+      <WhyChooseUs />
+
+      <ProductList search={search} />
+    </div>
+  );
+}
+
+export default Home;
