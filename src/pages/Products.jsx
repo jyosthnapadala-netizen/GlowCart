@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import ProductList from "../components/ProductList";
 
-function Products() {
+function Products({ search }) {
   const location = useLocation();
 
   const selectedCategory =
@@ -9,7 +9,10 @@ function Products() {
 
   return (
     <div>
-      <ProductList selectedCategory={selectedCategory} />
+      <ProductList
+        search={search}
+        selectedCategory={selectedCategory}
+      />
     </div>
   );
 }

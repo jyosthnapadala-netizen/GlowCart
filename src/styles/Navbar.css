@@ -1,39 +1,66 @@
 .navbar {
     width: 100%;
-    height: 70px;
-    padding: 0 40px;
+    min-height: 72px;
+    padding: 0 50px;
+
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 35px;
 
     background-color: #ffffff;
     border-bottom: 1px solid #eeeeee;
 
     box-sizing: border-box;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 /* Logo */
 
 .logo {
-    font-size: 26px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    text-decoration: none;
+
+    font-size: 25px;
     font-weight: 700;
+    letter-spacing: 0.3px;
+
     color: #222;
-    letter-spacing: 0.5px;
+
+    white-space: nowrap;
 }
 
-/* Navigation links */
+.logo-icon {
+    color: #d45d79;
+    font-size: 20px;
+}
+
+/* Navigation */
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 26px;
+
+    margin-left: 15px;
 }
 
 .nav-links a {
+    position: relative;
+
     text-decoration: none;
-    color: #333;
+    color: #444;
+
     font-size: 15px;
     font-weight: 500;
+
+    padding: 25px 0;
+
     transition: color 0.2s ease;
 }
 
@@ -41,48 +68,169 @@
     color: #d45d79;
 }
 
+/* Active link */
+
+.nav-links a.active {
+    color: #d45d79;
+}
+
+.nav-links a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 16px;
+
+    height: 2px;
+
+    background-color: #d45d79;
+    border-radius: 2px;
+}
+
 /* Search */
 
 .search-box {
+    position: relative;
+
     width: 280px;
+    margin-left: auto;
 }
 
 .search-box input {
     width: 100%;
-    height: 40px;
+    height: 42px;
 
-    padding: 0 18px;
+    padding: 0 18px 0 42px;
 
-    border: 1px solid #dddddd;
-    border-radius: 22px;
+    border: 1px solid #e1e1e1;
+    border-radius: 24px;
 
     outline: none;
+
+    background-color: #fafafa;
 
     font-size: 14px;
 
     box-sizing: border-box;
 
-    transition: border-color 0.2s ease,
-                box-shadow 0.2s ease;
+    transition: 0.2s ease;
 }
 
 .search-box input:focus {
+    background-color: #ffffff;
+
     border-color: #d45d79;
-    box-shadow: 0 0 0 3px rgba(212, 93, 121, 0.1);
+
+    box-shadow:
+        0 0 0 3px rgba(212, 93, 121, 0.1);
 }
 
 .search-box input::placeholder {
     color: #999;
 }
 
-/* Responsive */
+/* Search icon */
+
+.search-icon {
+    position: absolute;
+
+    left: 16px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #888;
+
+    font-size: 20px;
+
+    pointer-events: none;
+}
+
+/* Cart */
+
+.cart-link {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    text-decoration: none;
+
+    color: #333;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition: color 0.2s ease;
+}
+
+.cart-link:hover {
+    color: #d45d79;
+}
+
+.cart-icon {
+    font-size: 20px;
+}
+
+.cart-text {
+    margin-right: 2px;
+}
+
+/* Cart count */
+
+.cart-count {
+    min-width: 20px;
+    height: 20px;
+
+    padding: 0 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #d45d79;
+    color: white;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    box-sizing: border-box;
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        padding: 0 25px;
+        gap: 20px;
+    }
+
+    .nav-links {
+        gap: 18px;
+        margin-left: 0;
+    }
+
+    .search-box {
+        width: 220px;
+    }
+}
+
+/* Mobile */
 
 @media (max-width: 768px) {
 
     .navbar {
-        height: auto;
-        min-height: 70px;
-        padding: 15px 20px;
+        min-height: 65px;
+
+        padding: 12px 20px;
 
         flex-wrap: wrap;
         gap: 15px;
@@ -93,11 +241,34 @@
     }
 
     .nav-links {
-        gap: 15px;
+        order: 3;
+
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 25px;
+    }
+
+    .nav-links a {
+        padding: 5px 0;
+    }
+
+    .nav-links a.active::after {
+        bottom: -3px;
     }
 
     .search-box {
+        order: 4;
+
         width: 100%;
-        order: 3;
+    }
+
+    .cart-link {
+        margin-left: auto;
+    }
+
+    .cart-text {
+        display: none;
     }
 }

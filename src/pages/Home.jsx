@@ -1,7 +1,6 @@
 import Hero from "../components/Hero";
 import CategorySection from "../components/CategorySection";
 import FeaturedProducts from "../components/FeaturedProducts";
-import ProductList from "../components/ProductList";
 import OfferBanner from "../components/OfferBanner";
 import BestSellers from "../components/BestSellers";
 import WhyChooseUs from "../components/WhyChooseUs";
@@ -19,8 +18,6 @@ function Home({ search }) {
       <OfferBanner />
       <BestSellers />
       <WhyChooseUs />
-
-      <ProductList search={search} />
     </div>
   );
 }

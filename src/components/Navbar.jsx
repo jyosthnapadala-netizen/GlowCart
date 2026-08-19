@@ -1,6 +1,5 @@
-import React from "react";
 import "../styles/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 function Navbar({ search, setSearch }) {
@@ -13,20 +12,50 @@ function Navbar({ search, setSearch }) {
 
     return (
         <nav className="navbar">
+
+            {/* Logo */}
+
             <Link to="/" className="logo">
+                <span className="logo-icon">✦</span>
                 GlowCart
             </Link>
+
+            {/* Navigation */}
+
             <div className="nav-links">
-                <Link to="/">Home</Link>
 
-                <Link to="/products">Products</Link>
+                <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                        isActive ? "active" : ""
+                    }
+                >
+                    Home
+                </NavLink>
 
-                <Link to="/cart">
-                    Cart ({cartCount})
-                </Link>
+                <NavLink
+                    to="/products"
+                    className={({ isActive }) =>
+                        isActive ? "active" : ""
+                    }
+                >
+                    Products
+                </NavLink>
+
+                <NavLink
+                    to="/products"
+                    className="offers-link"
+                >
+                    Offers
+                </NavLink>
+
             </div>
 
+            {/* Search */}
+
             <div className="search-box">
+                <span className="search-icon">⌕</span>
+
                 <input
                     type="text"
                     placeholder="Search products..."
@@ -36,6 +65,23 @@ function Navbar({ search, setSearch }) {
                     }
                 />
             </div>
+
+            {/* Cart */}
+
+            <Link to="/cart" className="cart-link">
+                <span className="cart-icon">🛒</span>
+
+                <span className="cart-text">
+                    Cart
+                </span>
+
+                {cartCount > 0 && (
+                    <span className="cart-count">
+                        {cartCount}
+                    </span>
+                )}
+            </Link>
+
         </nav>
     );
 }

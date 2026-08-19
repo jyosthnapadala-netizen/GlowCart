@@ -24,7 +24,7 @@ function App() {
         />
         <Route
           path="/products"
-          element={<Products />}
+          element={<Products search={search} />}
         />
 
         <Route
