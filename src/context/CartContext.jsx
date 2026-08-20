@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
 
+
 function CartProvider({ children }) {
     const [cart, setCart] = useState(() => {
         const savedCart = localStorage.getItem("glowcart");
@@ -15,9 +16,8 @@ function CartProvider({ children }) {
         );
     }, [cart]);
 
-    const addToCart = (product) => {
+    const addToCart = (product, quantity = 1) => {
         setCart((previousCart) => {
-
             const existingProduct = previousCart.find(
                 (item) => item.id === product.id
             );
@@ -27,7 +27,7 @@ function CartProvider({ children }) {
                     item.id === product.id
                         ? {
                             ...item,
-                            quantity: (item.quantity || 0) + 1
+                            quantity: (item.quantity || 0) + quantity
                         }
                         : item
                 );
@@ -37,12 +37,11 @@ function CartProvider({ children }) {
                 ...previousCart,
                 {
                     ...product,
-                    quantity: 1
+                    quantity
                 }
             ];
         });
     };
-
     const increaseQuantity = (productId) => {
         setCart((previousCart) =>
             previousCart.map((item) =>

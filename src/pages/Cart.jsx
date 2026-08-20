@@ -1,5 +1,6 @@
 import { useCart } from "../context/CartContext";
 import "../styles/Cart.css";
+import { Link } from "react-router-dom";
 
 function Cart() {
     const {
@@ -86,9 +87,12 @@ function Cart() {
                             <strong>₹{totalPrice}</strong>
                         </div>
 
-                        <button className="checkout-btn">
+                        <Link
+                            to="/checkout"
+                            className="checkout-btn"
+                        >
                             Proceed to Checkout
-                        </button>
+                        </Link>
                     </div>
 
                 </div>

@@ -117,7 +117,9 @@
 }
 
 .checkout-btn {
+    display: block;
     width: 100%;
+    box-sizing: border-box;
     margin-top: 25px;
     padding: 13px;
     border: none;
@@ -127,6 +129,8 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
 }
 
 .checkout-btn:hover {

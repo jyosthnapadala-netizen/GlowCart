@@ -6,7 +6,7 @@ import BestSellers from "../components/BestSellers";
 import WhyChooseUs from "../components/WhyChooseUs";
 import PromoBanners from "../components/PromoBanners";
 
-function Home({ search }) {
+function Home() {
   return (
     <div>
       <Hero />

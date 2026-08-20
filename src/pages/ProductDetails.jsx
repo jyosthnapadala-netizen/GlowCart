@@ -1,10 +1,13 @@
 import { Link, useParams } from "react-router-dom";
+import { useState } from "react";
 import products from "../data/products";
 import { useCart } from "../context/CartContext";
 import "../styles/ProductDetails.css";
 
 function ProductDetails() {
     const { id } = useParams();
+
+    const [quantity, setQuantity] = useState(1);
 
     const { addToCart } = useCart();
 
@@ -16,6 +19,7 @@ function ProductDetails() {
         return (
             <div>
                 <h2>Product not found</h2>
+
                 <Link to="/products">
                     Back to Products
                 </Link>
@@ -24,8 +28,7 @@ function ProductDetails() {
     }
 
     const handleAddToCart = () => {
-        addToCart(product);
-        alert(`${product.name} added to cart!`);
+        addToCart(product, quantity);
     };
 
     return (
@@ -45,6 +48,7 @@ function ProductDetails() {
                 </div>
 
                 <div>
+
                     <p>{product.category}</p>
 
                     <h1>{product.name}</h1>
@@ -53,16 +57,56 @@ function ProductDetails() {
 
                     <p>{product.description}</p>
 
-                    <button onClick={handleAddToCart}>
+                    {/* QUANTITY */}
+                    <div className="quantity-control">
+
+                        <button
+                            type="button"
+                            onClick={() =>
+                                setQuantity(
+                                    (previousQuantity) =>
+                                        Math.max(
+                                            1,
+                                            previousQuantity - 1
+                                        )
+                                )
+                            }
+                        >
+                            -
+                        </button>
+
+                        <span>{quantity}</span>
+
+                        <button
+                            type="button"
+                            onClick={() =>
+                                setQuantity(
+                                    (previousQuantity) =>
+                                        previousQuantity + 1
+                                )
+                            }
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                    {/* ADD TO CART */}
+                    <button
+                        type="button"
+                        onClick={handleAddToCart}
+                    >
                         Add to Cart
                     </button>
 
                     <Link to="/cart">
                         Go to Cart
                     </Link>
+
                 </div>
 
             </div>
+
         </div>
     );
 }
