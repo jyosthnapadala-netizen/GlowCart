@@ -1,87 +1,54 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext();
 
+export function CartProvider({ children }) {
+    const [cart, setCart] = useState([]);
 
-function CartProvider({ children }) {
-    const [cart, setCart] = useState(() => {
-        const savedCart = localStorage.getItem("glowcart");
-
-        return savedCart ? JSON.parse(savedCart) : [];
-    });
-    useEffect(() => {
-        localStorage.setItem(
-            "glowcart",
-            JSON.stringify(cart)
-        );
-    }, [cart]);
-
-    const addToCart = (product, quantity = 1) => {
-        setCart((previousCart) => {
-            const existingProduct = previousCart.find(
+    const addToCart = (product) => {
+        setCart((prevCart) => {
+            const existingProduct = prevCart.find(
                 (item) => item.id === product.id
             );
 
             if (existingProduct) {
-                return previousCart.map((item) =>
+                return prevCart.map((item) =>
                     item.id === product.id
-                        ? {
-                            ...item,
-                            quantity: (item.quantity || 0) + quantity
-                        }
+                        ? { ...item, quantity: item.quantity + 1 }
                         : item
                 );
             }
-            const clearCart = () => {
-                setCart([]);
-            };
 
-            return [
-                ...previousCart,
-                {
-                    ...product,
-                    quantity
-                }
-            ];
+            return [...prevCart, { ...product, quantity: 1 }];
         });
     };
+
+    const removeFromCart = (productId) => {
+        setCart((prevCart) =>
+            prevCart.filter((item) => item.id !== productId)
+        );
+    };
+
     const increaseQuantity = (productId) => {
-        setCart((previousCart) =>
-            previousCart.map((item) =>
+        setCart((prevCart) =>
+            prevCart.map((item) =>
                 item.id === productId
-                    ? {
-                        ...item,
-                        quantity: item.quantity + 1
-                    }
+                    ? { ...item, quantity: item.quantity + 1 }
                     : item
             )
         );
     };
 
     const decreaseQuantity = (productId) => {
-        setCart((previousCart) =>
-            previousCart
+        setCart((prevCart) =>
+            prevCart
                 .map((item) =>
                     item.id === productId
-                        ? {
-                            ...item,
-                            quantity: item.quantity - 1
-                        }
+                        ? { ...item, quantity: item.quantity - 1 }
                         : item
                 )
                 .filter((item) => item.quantity > 0)
         );
-    };
-
-    const removeFromCart = (productId) => {
-        setCart((previousCart) =>
-            previousCart.filter(
-                (item) => item.id !== productId
-            )
-        );
-    };
-    const clearCart = () => {
-        setCart([]);
     };
 
     return (
@@ -89,10 +56,9 @@ function CartProvider({ children }) {
             value={{
                 cart,
                 addToCart,
+                removeFromCart,
                 increaseQuantity,
                 decreaseQuantity,
-                removeFromCart,
-                clearCart
             }}
         >
             {children}
@@ -103,5 +69,3 @@ function CartProvider({ children }) {
 export function useCart() {
     return useContext(CartContext);
 }
-
-export default CartProvider;

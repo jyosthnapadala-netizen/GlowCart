@@ -71,3 +71,15 @@
         height: 220px;
     }
 }
+
+.wishlist-button {
+    border: none;
+    background: none;
+    font-size: 26px;
+    cursor: pointer;
+    float: right;
+}
+
+.wishlist-button:hover {
+    transform: scale(1.15);
+}

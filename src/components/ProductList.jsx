@@ -1,5 +1,5 @@
 import { useState } from "react";
-import products from "../data/products";
+import { useProducts } from "../context/ProductContext";
 import ProductCard from "./ProductCard";
 import "../styles/ProductList.css";
 
@@ -7,10 +7,32 @@ function ProductList({
   search = "",
   selectedCategory = "All"
 }) {
+  const { products, loading, error } = useProducts();
+
   const [category, setCategory] = useState(selectedCategory);
 
+  // Loading state
+  if (loading) {
+    return (
+      <section className="products-section">
+        <h2>Our Products</h2>
+        <p>Loading products...</p>
+      </section>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <section className="products-section">
+        <h2>Our Products</h2>
+        <p>{error}</p>
+      </section>
+    );
+  }
+
   const filteredProducts = products.filter((product) => {
-    const productName = product.name || "";
+    const productName = product.title || "";
     const searchText = search || "";
 
     const matchesSearch = productName
