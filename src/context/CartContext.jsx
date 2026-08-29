@@ -32,6 +32,9 @@ function CartProvider({ children }) {
                         : item
                 );
             }
+            const clearCart = () => {
+                setCart([]);
+            };
 
             return [
                 ...previousCart,
@@ -77,6 +80,9 @@ function CartProvider({ children }) {
             )
         );
     };
+    const clearCart = () => {
+        setCart([]);
+    };
 
     return (
         <CartContext.Provider
@@ -85,7 +91,8 @@ function CartProvider({ children }) {
                 addToCart,
                 increaseQuantity,
                 decreaseQuantity,
-                removeFromCart
+                removeFromCart,
+                clearCart
             }}
         >
             {children}

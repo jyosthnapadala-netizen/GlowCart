@@ -4,7 +4,7 @@ import { useCart } from "../context/CartContext";
 import "../styles/Checkout.css";
 
 function Checkout() {
-    const { cart } = useCart();
+    const { cart, clearCart } = useCart();
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -36,6 +36,8 @@ function Checkout() {
         event.preventDefault();
 
         console.log("Order details:", formData);
+
+        clearCart();
 
         navigate("/order-success");
     };
