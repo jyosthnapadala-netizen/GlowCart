@@ -1,18 +1,29 @@
+
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
-import products from "../data/products";
+import { useProducts } from "../context/ProductContext";
 import { useCart } from "../context/CartContext";
 import "../styles/ProductDetails.css";
 
 function ProductDetails() {
     const { id } = useParams();
 
+    const { products, loading, error } = useProducts();
+
     const [quantity, setQuantity] = useState(1);
 
     const { addToCart } = useCart();
 
+    if (loading) {
+        return <p>Loading product...</p>;
+    }
+
+    if (error) {
+        return <p>{error}</p>;
+    }
+
     const product = products.find(
-        (item) => item.id === Number(id)
+        (item) => String(item.id) === String(id)
     );
 
     if (!product) {
@@ -43,7 +54,7 @@ function ProductDetails() {
                 <div>
                     <img
                         src={product.image}
-                        alt={product.name}
+                        alt={product.title}
                     />
                 </div>
 
@@ -51,24 +62,19 @@ function ProductDetails() {
 
                     <p>{product.category}</p>
 
-                    <h1>{product.name}</h1>
+                    <h1>{product.title}</h1>
 
                     <h2>₹{product.price}</h2>
 
                     <p>{product.description}</p>
 
-                    {/* QUANTITY */}
                     <div className="quantity-control">
 
                         <button
                             type="button"
                             onClick={() =>
-                                setQuantity(
-                                    (previousQuantity) =>
-                                        Math.max(
-                                            1,
-                                            previousQuantity - 1
-                                        )
+                                setQuantity((previousQuantity) =>
+                                    Math.max(1, previousQuantity - 1)
                                 )
                             }
                         >
@@ -80,9 +86,8 @@ function ProductDetails() {
                         <button
                             type="button"
                             onClick={() =>
-                                setQuantity(
-                                    (previousQuantity) =>
-                                        previousQuantity + 1
+                                setQuantity((previousQuantity) =>
+                                    previousQuantity + 1
                                 )
                             }
                         >
@@ -91,7 +96,6 @@ function ProductDetails() {
 
                     </div>
 
-                    {/* ADD TO CART */}
                     <button
                         type="button"
                         onClick={handleAddToCart}

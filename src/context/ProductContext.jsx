@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 
 const ProductContext = createContext();
 
@@ -11,11 +11,9 @@ export function ProductProvider({ children }) {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get(
-                    "https://dummyjson.com/products?limit=100"
-                );
+                const response = await api.get("/products");
 
-                setProducts(response.data.products);
+                setProducts(response.data);
             } catch (error) {
                 console.error("Error fetching products:", error);
                 setError("Failed to load products.");

@@ -1,8 +1,8 @@
 
 import { Link } from "react-router-dom";
-import faceWash from "../assets/products/banner1.jpeg";
-import lipstick from "../assets/products/banner2.jpeg";
-import serum from "../assets/products/banner4.jpeg";
+const faceWash = "/images/banner1.jpeg";
+const lipstick = "/images/banner2.jpeg";
+const serum = "/images/banner4.jpeg";
 import "../styles/PromoBanners.css";
 
 function PromoBanners() {

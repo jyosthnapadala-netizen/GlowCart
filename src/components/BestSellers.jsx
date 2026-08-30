@@ -1,33 +1,52 @@
-import products from "../data/products";
 import ProductCard from "./ProductCard";
+import { useProducts } from "../context/ProductContext";
 import "../styles/BestSellers.css";
 
 function BestSellers() {
-  const bestSellers = products.filter(
-    (product) =>
-      product.id === 1 ||
-      product.id === 2 ||
-      product.id === 5
-  );
+    const { products, loading, error } = useProducts();
 
-  return (
-    <section className="best-sellers-section">
-      <h2>Best Sellers</h2>
+    const bestSellers = products.slice(0, 3);
 
-      <p className="best-sellers-subtitle">
-        Our customers' favorite beauty essentials
-      </p>
+    if (loading) {
+        return (
+            <section className="best-sellers-section">
+                <h2>Best Sellers</h2>
+                <p>Loading products...</p>
+            </section>
+        );
+    }
 
-      <div className="best-sellers-grid">
-        {bestSellers.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-          />
-        ))}
-      </div>
-    </section>
-  );
+    if (error) {
+        return (
+            <section className="best-sellers-section">
+                <h2>Best Sellers</h2>
+                <p>{error}</p>
+            </section>
+        );
+    }
+
+    return (
+        <section className="best-sellers-section">
+
+            <h2>Best Sellers</h2>
+
+            <p className="best-sellers-subtitle">
+                Our customers' favorite beauty essentials
+            </p>
+
+            <div className="best-sellers-grid">
+
+                {bestSellers.map((product) => (
+                    <ProductCard
+                        key={product.id}
+                        product={product}
+                    />
+                ))}
+
+            </div>
+
+        </section>
+    );
 }
 
 export default BestSellers;

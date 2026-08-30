@@ -178,7 +178,7 @@ function Checkout() {
                             key={product.id}
                         >
                             <span>
-                                {product.name} × {product.quantity}
+                                {product.title} × {product.quantity}
                             </span>
 
                             <strong>

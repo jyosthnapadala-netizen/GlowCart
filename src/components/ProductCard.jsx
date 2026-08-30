@@ -32,10 +32,12 @@ function ProductCard({ product }) {
             <div className="product-image-container">
 
                 <img
-                    src={product.thumbnail}
+                    src={product.image}
                     alt={product.title}
+                    onError={(event) => {
+                        event.currentTarget.src = "/images/product-placeholder.jpg";
+                    }}
                 />
-
                 {/* Wishlist */}
                 <button
                     className="wishlist-button"

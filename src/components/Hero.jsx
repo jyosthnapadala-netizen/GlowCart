@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import banner1 from "../assets/products/banner1.jpeg";
-import banner2 from "../assets/products/banner2.jpeg";
-import banner3 from "../assets/products/banner3.jpeg";
-import banner4 from "../assets/products/banner4.jpeg";
+const banner1 = "/images/banner1.jpeg";
+const banner2 = "/images/banner2.jpeg";
+const banner3 = "/images/banner3.jpeg";
+const banner4 = "/images/banner4.jpeg";
 
 import "../styles/Hero.css";
 

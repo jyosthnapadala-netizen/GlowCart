@@ -12,6 +12,8 @@ import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
 import Wishlist from "./pages/Wishlist";
 import ScrollToTop from "./components/ScrollToTop";
+import Footer from "./components/Footer";
+import Offers from "./pages/Offers";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -21,7 +23,7 @@ function App() {
       <CartProvider>
         <WishlistProvider>
           <BrowserRouter>
-          <ScrollToTop />
+            <ScrollToTop />
 
 
             <Navbar
@@ -39,6 +41,7 @@ function App() {
                 path="/products"
                 element={<Products search={search} />}
               />
+              <Route path="/offers" element={<Offers />} />
               <Route
                 path="/wishlist"
                 element={<Wishlist />}
@@ -64,6 +67,7 @@ function App() {
                 element={<OrderSuccess />}
               />
             </Routes>
+            <Footer />
 
           </BrowserRouter>
         </WishlistProvider>

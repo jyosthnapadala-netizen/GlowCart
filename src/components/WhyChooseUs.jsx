@@ -1,51 +1,76 @@
 import "../styles/WhyChooseUs.css";
 
 function WhyChooseUs() {
-  return (
-    <section className="why-section">
-      <h2>Why Choose GlowCart?</h2>
+    const benefits = [
+        {
+            icon: "🚚",
+            title: "Fast Delivery",
+            description:
+                "Get your favorite beauty products delivered quickly and safely."
+        },
+        {
+            icon: "🔒",
+            title: "Secure Payment",
+            description:
+                "Shop with confidence using a safe and secure checkout experience."
+        },
+        {
+            icon: "↩️",
+            title: "Easy Returns",
+            description:
+                "Enjoy a simple and hassle-free return experience on eligible products."
+        },
+        {
+            icon: "✨",
+            title: "Quality Products",
+            description:
+                "Discover carefully selected beauty essentials for your daily routine."
+        }
+    ];
 
-      <p className="why-subtitle">
-        Everything you need for a simple and beautiful shopping experience.
-      </p>
+    return (
+        <section className="why-section">
 
-      <div className="why-grid">
+            <div className="why-header">
+                <p className="why-label">
+                    THE GLOWCART PROMISE
+                </p>
 
-        <div className="why-card">
-          <div className="why-icon">🚚</div>
-          <h3>Fast Delivery</h3>
-          <p>
-            Get your favorite beauty products delivered quickly.
-          </p>
-        </div>
+                <h2>
+                    Why Choose GlowCart?
+                </h2>
 
-        <div className="why-card">
-          <div className="why-icon">🔒</div>
-          <h3>Secure Payment</h3>
-          <p>
-            Your payment information is protected and secure.
-          </p>
-        </div>
+                <p className="why-subtitle">
+                    Everything you need for a simple, secure and
+                    enjoyable beauty shopping experience.
+                </p>
+            </div>
 
-        <div className="why-card">
-          <div className="why-icon">↩️</div>
-          <h3>Easy Returns</h3>
-          <p>
-            Simple and hassle-free returns on eligible products.
-          </p>
-        </div>
+            <div className="why-grid">
 
-        <div className="why-card">
-          <div className="why-icon">✨</div>
-          <h3>Quality Products</h3>
-          <p>
-            Carefully selected products for your beauty routine.
-          </p>
-        </div>
+                {benefits.map((benefit) => (
+                    <div
+                        className="why-card"
+                        key={benefit.title}
+                    >
+                        <div className="why-icon">
+                            {benefit.icon}
+                        </div>
 
-      </div>
-    </section>
-  );
+                        <h3>
+                            {benefit.title}
+                        </h3>
+
+                        <p>
+                            {benefit.description}
+                        </p>
+                    </div>
+                ))}
+
+            </div>
+
+        </section>
+    );
 }
 
 export default WhyChooseUs;

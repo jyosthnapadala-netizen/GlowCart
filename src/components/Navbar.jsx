@@ -42,10 +42,8 @@ function Navbar({ search, setSearch }) {
                     Products
                 </NavLink>
 
-                <NavLink
-                    to="/products"
-                    className="offers-link"
-                >
+
+                <NavLink to="/offers">
                     Offers
                 </NavLink>
 
