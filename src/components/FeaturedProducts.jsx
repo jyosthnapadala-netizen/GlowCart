@@ -1,33 +1,62 @@
 import { Link } from "react-router-dom";
-import products from "../data/products";
+import { useProducts } from "../context/ProductContext";
 import ProductCard from "./ProductCard";
 import "../styles/FeaturedProducts.css";
 
 function FeaturedProducts() {
-  const featuredProducts = products.slice(0, 4);
+    const { products, loading, error } = useProducts();
 
-  return (
-    <section className="featured-section">
-      <h2>Featured Products</h2>
+    const featuredProducts = products.slice(0, 4);
 
-      <p className="featured-subtitle">
-        Discover our popular beauty essentials
-      </p>
+    return (
+        <section className="featured-section">
 
-      <div className="featured-grid">
-        {featuredProducts.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-          />
-        ))}
-      </div>
+            <div className="featured-heading">
+                <p className="featured-label">
+                    OUR COLLECTION
+                </p>
 
-      <Link to="/products" className="view-products-btn">
-        View All Products
-      </Link>
-    </section>
-  );
+                <h2>Featured Products</h2>
+
+                <p className="featured-subtitle">
+                    Discover our popular beauty essentials
+                </p>
+            </div>
+
+            {loading && (
+                <p className="featured-message">
+                    Loading beauty products...
+                </p>
+            )}
+
+            {error && (
+                <p className="featured-message">
+                    Unable to load products.
+                </p>
+            )}
+
+            {!loading && !error && (
+                <>
+                    <div className="featured-grid">
+                        {featuredProducts.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                product={product}
+                            />
+                        ))}
+                    </div>
+
+                    <Link
+                        to="/products"
+                        className="view-products-btn"
+                    >
+                        View All Products
+                    </Link>
+                </>
+            )}
+
+        </section>
+    );
 }
 
 export default FeaturedProducts;

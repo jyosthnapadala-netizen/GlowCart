@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import faceWash from "../assets/products/banner1.jpeg";
 import lipstick from "../assets/products/banner2.jpeg";
@@ -5,59 +6,93 @@ import serum from "../assets/products/banner4.jpeg";
 import "../styles/PromoBanners.css";
 
 function PromoBanners() {
-  return (
-    <section className="promo-section">
+    const promos = [
+        {
+            image: faceWash,
+            label: "SKINCARE",
+            title: "Glow Starts Here",
+            description:
+                "Build a simple routine with everyday skincare essentials.",
+            button: "Shop Skincare",
+            category: "Skincare",
+        },
+        {
+            image: lipstick,
+            label: "MAKEUP",
+            title: "Find Your Glow",
+            description:
+                "Discover beauty essentials made for every look.",
+            button: "Shop Makeup",
+            category: "Makeup",
+        },
+        {
+            image: serum,
+            label: "GLOWCART PICKS",
+            title: "Glow More, Save More",
+            description:
+                "Explore our handpicked beauty favourites.",
+            button: "Shop Collection",
+            category: null,
+        },
+    ];
 
-      <div className="promo-card">
-        <img src={faceWash} alt="Skincare products" />
+    return (
+        <section className="promo-section">
 
-        <div className="promo-content">
-          <span>SKINCARE</span>
-          <h2>Glow Starts Here</h2>
-          <p>Discover your daily skincare essentials.</p>
+            <div className="promo-heading">
+                <p>BEAUTY EDIT</p>
+                <h2>Made for Your Glow</h2>
+            </div>
 
-          <Link
-            to="/products"
-            state={{ category: "Skincare" }}
-          >
-            Shop Skincare
-          </Link>
-        </div>
-      </div>
+            <div className="promo-grid">
 
-      <div className="promo-card">
-        <img src={lipstick} alt="Makeup products" />
+                {promos.map((promo) => (
+                    <div
+                        className="promo-card"
+                        key={promo.title}
+                    >
+                        <img
+                            src={promo.image}
+                            alt={promo.title}
+                        />
 
-        <div className="promo-content">
-          <span>MAKEUP</span>
-          <h2>Find Your Glow</h2>
-          <p>Explore beauty essentials for every look.</p>
+                        <div className="promo-overlay">
+                            <div className="promo-content">
 
-          <Link
-            to="/products"
-            state={{ category: "Makeup" }}
-          >
-            Shop Makeup
-          </Link>
-        </div>
-      </div>
+                                <span>{promo.label}</span>
 
-      <div className="promo-card">
-        <img src={serum} alt="Beauty products" />
+                                <h3>{promo.title}</h3>
 
-        <div className="promo-content">
-          <span>SPECIAL OFFER</span>
-          <h2>Glow More, Save More</h2>
-          <p>Discover selected beauty products and offers.</p>
+                                <p>
+                                    {promo.description}
+                                </p>
 
-          <Link to="/products">
-            Shop Now
-          </Link>
-        </div>
-      </div>
+                                <Link
+                                    to="/products"
+                                    state={
+                                        promo.category
+                                            ? {
+                                                category:
+                                                    promo.category,
+                                            }
+                                            : undefined
+                                    }
+                                >
+                                    {promo.button}
+                                    <span className="promo-arrow">
+                                        →
+                                    </span>
+                                </Link>
 
-    </section>
-  );
+                            </div>
+                        </div>
+                    </div>
+                ))}
+
+            </div>
+
+        </section>
+    );
 }
 
 export default PromoBanners;
