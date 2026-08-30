@@ -46,6 +46,7 @@ function Navbar({ search, setSearch }) {
                 <NavLink to="/offers">
                     Offers
                 </NavLink>
+                <Link to="/wishlist">Wishlist ❤️</Link>
 
             </div>
 

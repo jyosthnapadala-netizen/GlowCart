@@ -20,8 +20,11 @@ function Wishlist() {
                             key={product.id}
                         >
                             <img
-                                src={product.thumbnail}
+                                src={product.image}
                                 alt={product.title}
+                                onError={(event) => {
+                                    event.currentTarget.src = "/images/product-placeholder.jpg";
+                                }}
                             />
 
                             <h3>{product.title}</h3>
