@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
@@ -8,11 +7,11 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
-
 import { ProductProvider } from "./context/ProductContext";
 import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
 import Wishlist from "./pages/Wishlist";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -22,6 +21,8 @@ function App() {
       <CartProvider>
         <WishlistProvider>
           <BrowserRouter>
+          <ScrollToTop />
+
 
             <Navbar
               search={search}

@@ -1,24 +1,50 @@
+
 import { Link } from "react-router-dom";
 import "../styles/OfferBanner.css";
 
 function OfferBanner() {
-  return (
-    <section className="offer-banner">
-      <div className="offer-content">
-        <p className="offer-small">LIMITED TIME OFFER</p>
+    return (
+        <section className="offer-banner">
 
-        <h2>Glow More, Spend Less ✨</h2>
+            <div className="offer-decoration offer-decoration-one">
+                ✦
+            </div>
 
-        <p>
-          Get 20% OFF on selected beauty products.
-        </p>
+            <div className="offer-decoration offer-decoration-two">
+                ✧
+            </div>
 
-        <Link to="/products" className="offer-btn">
-          Shop Now
-        </Link>
-      </div>
-    </section>
-  );
+            <div className="offer-content">
+
+                <p className="offer-small">
+                    LIMITED TIME OFFER
+                </p>
+
+                <h2>
+                    Glow More, <span>Spend Less</span> ✨
+                </h2>
+
+                <p className="offer-description">
+                    Enjoy 20% OFF on selected beauty essentials.
+                    Treat yourself to something beautiful.
+                </p>
+
+                <Link
+                    to="/products"
+                    className="offer-btn"
+                >
+                    Shop the Offer
+                    <span>→</span>
+                </Link>
+
+                <p className="offer-note">
+                    *Offer available on selected products
+                </p>
+
+            </div>
+
+        </section>
+    );
 }
 
 export default OfferBanner;
