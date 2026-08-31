@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useProducts } from "../context/ProductContext";
+import { useProducts } from "../context/useProducts";
 import ProductCard from "./ProductCard";
 import "../styles/FeaturedProducts.css";
 

@@ -1,6 +1,6 @@
 import "../styles/Navbar.css";
 import { Link, NavLink } from "react-router-dom";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../context/useCart";
 
 function Navbar({ search, setSearch }) {
     const { cart } = useCart();

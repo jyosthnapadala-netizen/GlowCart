@@ -1,8 +1,8 @@
 
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
-import { useProducts } from "../context/ProductContext";
-import { useCart } from "../context/CartContext";
+import { useProducts } from "../context/useProducts";
+import { useCart } from "../context/useCart";
 import "../styles/ProductDetails.css";
 
 function ProductDetails() {

@@ -1,4 +1,4 @@
-import { useWishlist } from "../context/WishlistContext";
+import { useWishlist } from "../context/useWishlist";
 import "../styles/Wishlist.css";
 
 function Wishlist() {

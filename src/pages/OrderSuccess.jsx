@@ -1,9 +1,11 @@
-
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "../styles/OrderSuccess.css";
 
 function OrderSuccess() {
-    const orderNumber = `GC${Math.floor(100000 + Math.random() * 900000)}`;
+    const [orderNumber] = useState(
+        () => `GC${Math.floor(100000 + Math.random() * 900000)}`
+    );
 
     return (
         <div className="order-success">

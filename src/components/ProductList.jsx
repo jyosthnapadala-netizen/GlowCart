@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useProducts } from "../context/ProductContext";
+import { useProducts } from "../context/useProducts";
 import ProductCard from "./ProductCard";
 import "../styles/ProductList.css";
 

@@ -1,5 +1,5 @@
 import ProductCard from "./ProductCard";
-import { useProducts } from "../context/ProductContext";
+import { useProducts } from "../context/useProducts";
 import "../styles/BestSellers.css";
 
 function BestSellers() {
